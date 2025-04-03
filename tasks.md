@@ -22,4 +22,10 @@ Note : STEP2: In frontend whenever we make any API call - we have to pass in (i.
 - login and see if your data is coming properly in the store 
 - Navbar should update as soon as user logs in.
 
+## Razorpay payment Gateway Integration 
+       - Created a UI for premium page 
+       - Creating an API for create order in backend
+       Note : Revision (- 1 h : 22m)
+
+
 
