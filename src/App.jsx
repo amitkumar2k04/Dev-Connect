@@ -14,11 +14,10 @@ function App() {
     <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={ <Body/> }> 
-          <Route path="/" element={ <Feed/> }/> 
-          <Route path="/login" element={ <Login/> }/> 
-          <Route path="/profile" element={ <Profile/> } />
-          <Route path="/premium" element={ <Premium/> } />
-          
+          <Route path="login" element={ <Login/> }/> 
+          <Route path="feed" element={ <Feed/> }/> 
+          <Route path="profile" element={ <Profile/> } />
+          <Route path="premium" element={ <Premium/> } />
           </Route>
         </Routes>
     </BrowserRouter>

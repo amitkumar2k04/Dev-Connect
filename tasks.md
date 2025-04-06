@@ -22,6 +22,12 @@ Note : STEP2: In frontend whenever we make any API call - we have to pass in (i.
 - login and see if your data is coming properly in the store 
 - Navbar should update as soon as user logs in.
 
+## EP3
+- You should not be able to access other routes without login 
+- If token is not present re-direct user to login page 
+- get the feed and add the feed in the store 
+- Build the user card for feed
+
 ## Razorpay payment Gateway Integration 
        PART 1:
        - Created a UI for premium page 
