@@ -5,7 +5,7 @@ import Profile from "./components/Profile"
 import { Provider } from "react-redux"
 import appStore from "./utils/appStore"
 import Feed from "./components/Feed"
-import Premium from "./components/premium"
+import Premium from "./components/Premium"
 import Connections from "./components/Connections"
 import Requests from "./components/Requests"
 
