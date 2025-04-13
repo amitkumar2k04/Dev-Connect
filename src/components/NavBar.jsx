@@ -14,7 +14,7 @@ const NavBar = () => {
     if (!user) {
       navigate("/login");
     } else {
-      navigate("/");
+      navigate("/feed");
     }
   };
 
@@ -33,7 +33,7 @@ const NavBar = () => {
     <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
         <button onClick={handleClick} className="btn btn-ghost text-xl">
-          👨DevTinder
+          Dev-Connect
         </button>
       </div>
       {user && (
@@ -56,7 +56,7 @@ const NavBar = () => {
               <li>
                 <Link to="/profile" className="justify-between">
                   Profile
-                  <span className="badge">New</span>
+                  <span className="badge"></span>
                 </Link>
               </li>
               <li>

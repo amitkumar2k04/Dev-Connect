@@ -7,13 +7,14 @@ import { addConnections } from "../utils/connectionSlice";
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connections);
+  // console.log(connections);
 
   const fetchConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
         withCredentials: true,
       });
-      console.log(res.data.data);
+      // console.log(res.data.data);
       dispatch(addConnections(res.data.data));
     } catch (error) {
       console.log(error);
@@ -23,20 +24,21 @@ const Connections = () => {
   useEffect(() => {
     fetchConnections();
   }, []);
-  if (!connections) return; 
-  if (connections.length === 0) return <h1>No Connections Found</h1>;
+  if (!connections) return;
+  if (connections.length === 0)
+    return <h1 className="flex justify-center py-56">No Connections Found</h1>;
 
   return (
     <div className="text-center pt-8 pb-72">
-      <h1 className="text-3xl">Connections</h1>
+      <h1 className="text-2xl">Connections</h1>
 
       {connections.map((connection) => {
-        const { firstName, lastName, about, gender, photoUrl, age } =
+        const { _id, firstName, lastName, about, gender, photoUrl, age } =
           connection;
 
         return (
           <div
-            key={connection._id}
+            key={_id}
             className="flex items-center m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto"
           >
             <div>
@@ -56,7 +58,6 @@ const Connections = () => {
           </div>
         );
       })}
-
     </div>
   );
 };
