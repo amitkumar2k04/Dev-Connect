@@ -38,4 +38,36 @@ Note : STEP2: In frontend whenever we make any API call - we have to pass in (i.
        - setup Razorpay webhooks on the LIVE api
 
 
+## Deployment
+       - signup on AWS
+       - Launch instance 
+       - chmod 400 <secret.pem>
+       - ssh -i "DevConnect-Secret.pem" ubuntu@ec2-13-203-103-51.ap-south-1.compute.amazonaws.com
+       - Install Node Version : v22.14.0
+       - git clone 
+
+       Note : Installation of node of version v22.14.0
+       - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+       - export NVM_DIR="$HOME/.nvm" source "$NVM_DIR/nvm.sh"
+       - command -v nvm     -> It should return nvm
+       - nvm install 22.14.0
+
+
+
+
+
+-- Deployment on AWS (Frontend)
+       - sudo apt update                  -> To update the ubantu system 
+       - npm install                      -> dependency install
+       - npm run build                    -> Build the project 
+       - sudo apt install nginx           -> To install nginx
+       - sudo systemctl start nginx       -> To start nginx
+       - sudo systemctl enable nginx      -> To enable nginx
+       Note :  Copy dist folder - from dist(build files) to /var/www/html (See command below)
+       - sudo scp -r dist/* /var/www/html/
+       Node : We need to enable part 80  - to make our app live -> How to enable it -> from instance
+       - Enable port :80 of your instance
+
+
+
 
