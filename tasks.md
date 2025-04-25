@@ -69,5 +69,7 @@ Note : STEP2: In frontend whenever we make any API call - we have to pass in (i.
        - Enable port :80 of your instance
 
 
-
+## Building Real Time chat using Web-Sockets(socket.io)
+- Build the UI for a chat window on /chat/:targetUserId
+- Install npm i socket.io (In Backend)
 
