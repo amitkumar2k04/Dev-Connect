@@ -27,25 +27,25 @@ const UserCard = (props) => {
     <div>
       <div className="card bg-base-300 w-96 shadow-xl">
         <figure>
-          <img src={photoUrl} alt="photo" />
+          <img className="w-full h-60 object-cover rounded-xl border border-gray-700" src={photoUrl} alt="photo" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{firstName + " " + lastName}</h2>
-          {age && gender && <p>{age + ", " + gender}</p>}
-          <p>{about}</p>
+          <h2 className="text-xl text-center font-semibold text-white mt-4">{firstName + " " + lastName}</h2>
+          {age && gender && <p className="text-center text-xl text-white mt-4">{age + ", " + gender}</p>}
+          <p className="text-gray-400 text-sm mt-1 text-center px-4">{about}</p>
           {showButtons && (
             <div className="card-actions justify-center my-4">
               <button
-                className="btn btn-primary"
+                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-all duration-300"
                 onClick={() => reviewProfile("ignored", _id)}
               >
-                Ignore
+                Reject
               </button>
               <button
-                className="btn btn-secondary"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-all duration-300"
                 onClick={() => reviewProfile("interested", _id)}
               >
-                Send Request
+                Interested
               </button>
             </div>
           )}

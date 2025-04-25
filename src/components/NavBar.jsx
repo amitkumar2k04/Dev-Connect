@@ -31,13 +31,13 @@ const NavBar = () => {
 
   return (
     <div className="navbar bg-base-300 shadow-sm">
-      <div className="flex-1">
-        <button onClick={handleClick} className="btn btn-ghost text-xl">
-          Dev-Connect
+      <div className="navbar h-8 flex items-center px-2 ">
+        <button onClick={handleClick} className="ml-2 text-2xl  font-extrabold text-white">
+          DevConnect
         </button>
       </div>
       {user && (
-        <div className="flex gap-2">
+        <div className="flex-none gap-2">
           <div className="dropdown dropdown-end mx-5 flex">
             <p className="px-4">Welcome, {user.firstName}</p>
             <div
