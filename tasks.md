@@ -72,4 +72,12 @@ Note : STEP2: In frontend whenever we make any API call - we have to pass in (i.
 ## Building Real Time chat using Web-Sockets(socket.io)
 - Build the UI for a chat window on /chat/:targetUserId
 - Install npm i socket.io (In Backend)
+- setup frontend socket.io-client
+- initialized the chat 
+- create the socket connection 
+- listen two events 
+- HW - Fix security bug - auth in web-sockets
+- HW - Fix Bug If I am not friend, then I should not be able to send messages.
+
+
 
