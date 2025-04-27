@@ -1,4 +1,4 @@
-# DevTinder
+# DevConnect
 
 -- Installed Daisy UI 
 

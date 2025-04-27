@@ -5,7 +5,7 @@ We realized that while LinkedIn and other platforms give developers space to lis
 ## Introduction
 DevConnect is a full-stack web application designed to help developers build and showcase their portfolios, while allowing employers to easily discover and connect with talent. Developers can create profiles by entering their personal information, skills, and projects, along with uploading photos and links to their work. Employers can search for developers based on specific criteria and view detailed profiles to assess their qualifications. The platform serves as both a portfolio builder for developers and a recruitment tool for employers, providing a streamlined way for both parties to connect.
 
-## Introduction: Inspiration Behind DevTinder
+## Introduction: Inspiration Behind DevConnect
 
 DevConnect started as a passion project for a group of developers who wanted to solve a simple but crucial problem: helping developers showcase their skills and projects in a way that's easy for employers to find and evaluate. We envisioned a platform where developers could highlight their achievements and recruiters could find the talent they need.
 
