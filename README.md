@@ -46,7 +46,7 @@ Here's a look at DevConnect in action!
 ![MemberShip page](./images/memberShip_page.png)
 
 ## PaymentGateway Dashboard
-![PaymentGateway Dashboard](./images/payment_success.png)
+![PaymentGateway Dashboard](./images/paymentSuccess.png)
 
 ## Next Iterations and Future Plans
 
