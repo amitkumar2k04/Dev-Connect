@@ -20,6 +20,25 @@ While we had the vision, bringing it to life was a technical challenge. Some of 
 
 However, these challenges helped us grow as developers, and we learned a lot through trial and error.
 
+
+
+## Installation
+
+To get started with the DevConnect, you'll need to have Node.js and npm installed on your machine. Once you've done that, you can install the dependencies by running the following command in your terminal:
+
+```
+> npm install
+```
+
+Then, to use the DevConnect, simply run the following command in your terminal:
+
+```
+> npm run dev
+```
+
+Same step repeat in backend also, This will start the development server and open the project in your browser at Frontend at : http://localhost:5173 and Backend at http://localhost:5000
+
+
 ## Screenshots
 
 Here's a look at DevConnect in action!
