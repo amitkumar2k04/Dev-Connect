@@ -81,7 +81,7 @@ Note : STEP2: In frontend whenever we make any API call - we have to pass in (i.
        Node : We need to enable part 80  - to make our app live -> How to enable it -> from instance
        - Enable port :80 of your instance
 
-
+Web-Sockets(socket.io)
 ## Building Real Time chat using Web-Sockets(socket.io)
 - Build the UI for a chat window on /chat/:targetUserId
 - Install npm i socket.io (In Backend)

@@ -20,8 +20,6 @@ While we had the vision, bringing it to life was a technical challenge. Some of 
 
 However, these challenges helped us grow as developers, and we learned a lot through trial and error.
 
-
-
 ## Installation
 
 To get started with the DevConnect, you'll need to have Node.js and npm installed on your machine. Once you've done that, you can install the dependencies by running the following command in your terminal:
@@ -38,6 +36,14 @@ Then, to use the DevConnect, simply run the following command in your terminal:
 
 Same step repeat in backend also, This will start the development server and open the project in your browser at Frontend at : http://localhost:5173 and Backend at http://localhost:5000
 
+## Features We're Proud Of
+
+- **Dynamic Portfolios**: Developers can create and edit their portfolios, showcasing their projects with images and descriptions.
+- **Search Functionality**: Employers can search for developers based on skills and projects, making it easier for them to find the right fit.
+- **Responsive Design**: DevConnect works seamlessly across different screen sizes, making it accessible to anyone on any device.
+- **AWS SES Integration**: Integrated Amazon SES for receiving emails from users who send connection requests.
+- **Razorpay Payment Gateway Integration**: For those persons who want to buy premium membership
+- **Integrated Real-Time Chat Feature**: Implemented a real-time chat system using WebSockets (Socket.IO). Once two users are connected, they can instantly exchange messages with each other..
 
 ## Screenshots
 
