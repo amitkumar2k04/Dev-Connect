@@ -19,8 +19,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: "http://localhost:5173",   // Your frontend URL
-        credentials : true,                 // Allow cookies if needed
+        origin: process.env.NODE_ENV === 'production' 
+            ? 'https://devconnect.solutions'
+            : ['http://localhost:5173', 'http://localhost:3000'],
+        credentials: true
     })
 );
 
