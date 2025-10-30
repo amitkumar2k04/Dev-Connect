@@ -15,6 +15,14 @@ require('dotenv').config()
 
 require("./utils/cronjobs");
 
+// Validate required environment variables
+const requiredEnvVars = ['JWT_SECRET', 'DB_CONNECTION_SECRET', 'PORT'];
+const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+if (missingEnvVars.length > 0) {
+    console.error(`Missing required environment variables: ${missingEnvVars.join(', ')}`);
+    process.exit(1);
+}
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -31,6 +39,14 @@ app.use("/", userRouter);
 app.use("/", paymentRouter);
 app.use("/", chatRouter);
 
+// Global error handler
+app.use((err, req, res, next) => {
+    console.error('Error:', err);
+    res.status(err.status || 500).json({
+        message: err.message || 'Internal Server Error',
+        ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    });
+});
 
 const server = http.createServer(app);
 initializeSocket(server);

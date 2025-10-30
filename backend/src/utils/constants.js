@@ -1,6 +1,6 @@
 const memberShipAmount = {
-    'silver' : 999, 
-    'gold' : 1599,
+    'silver' : 499, 
+    'gold' : 999,
 };
 
 module.exports = { memberShipAmount };

@@ -85,7 +85,10 @@ const userSchema = new mongoose.Schema(
 
 userSchema.methods.getJWT = async function () {
     const user = this;
-    const token = await jwt.sign({_id : user._id}, "DEV@Tinder$790", { 
+    if (!process.env.JWT_SECRET) {
+        throw new Error("JWT_SECRET is not defined in environment variables");
+    }
+    const token = await jwt.sign({_id : user._id}, process.env.JWT_SECRET, { 
         expiresIn: '8h',
     });
     return token;
