@@ -25,6 +25,7 @@ chatRouter.get("/chat/:targetUserId", userAuth, async (req, res) => {
     res.json(chat);
   } catch (err) {
     console.error(err);
+    res.status(500).json({ message: "Error fetching chat messages", error: err.message });
   }
 });
 

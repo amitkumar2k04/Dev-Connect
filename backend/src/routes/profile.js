@@ -11,7 +11,7 @@ profileRouter.get("/profile/view", userAuth, async(req, res) => {
 
         res.send(user);
     }catch(err){
-        res.status(400).send("Something went wrong!");
+        res.status(400).json({ message: "Something went wrong!", error: err.message });
     }
 });
 
@@ -35,7 +35,7 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
         });
 
     }catch(err){
-        res.status(400).send("Something went wrong!");
+        res.status(400).json({ message: "Something went wrong!", error: err.message });
     }
 });
 

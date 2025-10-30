@@ -7,28 +7,23 @@ const jwt = require("jsonwebtoken");
 
 
 // creating signup API
-authRouter.post("/signup",async(req, res) => {
-    // console.log(req.body);
-    // Step 1 : validate your data 
+authRouter.post("/signup", async(req, res) => {
     try{
+        // Step 1 : validate your data 
         validateSignUpData(req);
-       // console.log(req.body);
-    } catch (err){
-        res.status(400).send("Error : " + err.message);
-    }
-    // step 2 : Encrypt the password
-    const {firstName, lastName, emailId, password} = req.body; // extracting the data out
-    const passwordHash = await bcrypt.hash(password, 10);
-    // console.log(passwordHash);
-    // Step 3: Store the data in DB - creating new instance of User model (i.e we're creating a new user with these data)
-    const user = new User({
-        firstName, 
-        lastName, 
-        emailId,
-        password : passwordHash,
-    });
+        
+        // step 2 : Encrypt the password
+        const {firstName, lastName, emailId, password} = req.body; // extracting the data out
+        const passwordHash = await bcrypt.hash(password, 10);
+        
+        // Step 3: Store the data in DB - creating new instance of User model (i.e we're creating a new user with these data)
+        const user = new User({
+            firstName, 
+            lastName, 
+            emailId,
+            password : passwordHash,
+        });
 
-    try{
         // saving data to DB
         const savedUser = await user.save();
 
@@ -41,7 +36,7 @@ authRouter.post("/signup",async(req, res) => {
         
         res.json({message : "User added successfully!", data : savedUser});
     } catch(err){
-        res.status(400).send("Error saving the user:" + err.message);
+        res.status(400).send("Error : " + err.message);
     }
 });
 
