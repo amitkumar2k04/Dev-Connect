@@ -27,6 +27,9 @@
 import axios from "axios";
 import { BASE_URL } from "./constants";
 
+// Configuration constants
+const LOGIN_ROUTE = '/login';
+
 // Create axios instance with default configuration
 const api = axios.create({
   baseURL: BASE_URL,
@@ -56,30 +59,29 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // Handle 401 Unauthorized errors
+    // Handle 401 Unauthorized errors - typically means authentication is required or session expired
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
-      // Check if it's a token expiration issue
-      if (error.response?.data?.message?.includes('token') || 
-          error.response?.data?.message?.includes('auth')) {
+      // For 401 errors, redirect to login
+      // The backend sends 401 for:
+      // - Invalid or expired tokens
+      // - Missing authentication
+      // - Session expiration
+      try {
+        // If your backend supports token refresh, implement it here
+        // For now, we'll redirect to login
+        console.warn('Authentication required, redirecting to login');
         
-        // Attempt to refresh the session
-        try {
-          // If your backend supports token refresh, implement it here
-          // For now, we'll redirect to login
-          console.warn('Session expired, please login again');
-          
-          // Clear any stored user data
-          // Dispatch logout action if using Redux
-          window.location.href = '/login';
-          
-          return Promise.reject(error);
-        } catch (refreshError) {
-          // If refresh fails, redirect to login
-          window.location.href = '/login';
-          return Promise.reject(refreshError);
-        }
+        // Clear any stored user data
+        // Dispatch logout action if using Redux
+        window.location.href = LOGIN_ROUTE;
+        
+        return Promise.reject(error);
+      } catch (refreshError) {
+        // If refresh fails, redirect to login
+        window.location.href = LOGIN_ROUTE;
+        return Promise.reject(refreshError);
       }
     }
 
