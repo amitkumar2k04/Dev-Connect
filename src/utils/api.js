@@ -1,3 +1,29 @@
+/**
+ * Centralized API handler with axios interceptors
+ * 
+ * This module provides a configured axios instance with:
+ * - Automatic credential handling (cookies)
+ * - Request/response interceptors
+ * - Authentication error handling
+ * - Token refresh mechanism
+ * - Enhanced error messages
+ * 
+ * Usage examples:
+ * 
+ * 1. Using the default axios instance:
+ *    import api from './utils/api';
+ *    const response = await api.get('/feed');
+ * 
+ * 2. Using helper functions:
+ *    import { apiGet, apiPost } from './utils/api';
+ *    const response = await apiGet('/feed');
+ *    const result = await apiPost('/login', { emailId, password });
+ * 
+ * 3. Legacy compatibility (existing code continues to work):
+ *    import axios from 'axios';
+ *    import { BASE_URL } from './utils/constants';
+ *    const response = await axios.get(BASE_URL + '/feed', { withCredentials: true });
+ */
 import axios from "axios";
 import { BASE_URL } from "./constants";
 
