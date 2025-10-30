@@ -1,19 +1,13 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { Code, Menu, X } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../utils/constants";
-import { removeUser } from "../../utils/userSlice";
-import Button from '../Button'; 
-import { useDispatch, useSelector } from "react-redux";
+import Button from '../Button';
 
 const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
 
 
   useEffect(() => {
@@ -25,14 +19,8 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
-      dispatch(removeUser());
-      navigate("/login");
-    } catch (err) {
-      console.log(err);
-    }
+  const handleLoginClick = () => {
+    navigate("/login");
   };
 
   //if (!user) return null;
@@ -74,7 +62,7 @@ const NavBar = () => {
             >
               Testimonials
             </a>
-            <Button  onClick={handleLogout} variant="primary" size="sm">
+            <Button  onClick={handleLoginClick} variant="primary" size="sm">
               Login/Register
             </Button>
           </nav>
@@ -114,7 +102,7 @@ const NavBar = () => {
             >
               Testimonials
             </a>
-            <Button onClick={handleLogout} variant="primary" size="sm" className="w-full">
+            <Button onClick={handleLoginClick} variant="primary" size="sm" className="w-full">
               Login/Register
             </Button>
           </nav>
