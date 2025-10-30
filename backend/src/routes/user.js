@@ -121,16 +121,14 @@ userRouter.get("/feed", userAuth, async (req, res) => {
 // Get user info by userId
 userRouter.get("/user/info/:userId", userAuth, async (req, res) => {
   try {
-    const { userId } = req.params;
-    const user = await User.findById(userId).select(USER_SAFE_DATA);
-    
+    const user = await User.findById(req.params.userId)
+      .select("firstName lastName photoUrl age gender about skills");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    
-    res.json(user);
+    res.json({ data: user });
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: "Error fetching user info", error: err.message });
   }
 });
 
