@@ -110,17 +110,20 @@ This document summarizes all the synchronization fixes applied to the DevConnect
 The following environment variables are required and have been configured:
 
 ```env
-RAZORPAY_KEY_ID=rzp_test_z75IromJe5IngZ
-RAZORPAY_KEY_SECRET=Tgv8nP7P9Rqg6zMxw3VJmnuf
-RAZORPAY_WEBHOOK_SECRET=Djx4uce9q3@8507
+RAZORPAY_KEY_ID=<razorpay_test_key_id>
+RAZORPAY_KEY_SECRET=<razorpay_secret>
+RAZORPAY_WEBHOOK_SECRET=<webhook_secret>
 PORT=5000
-JWT_SECRET=DEV@Tinder$790
-DB_CONNECTION_SECRET=mongodb+srv://...
-AWS_ACCESS_KEY=AKIA2FXADPYYH3AVGOP5
-AWS_SECRET_KEY=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
+JWT_SECRET=<jwt_secret_key>
+DB_CONNECTION_SECRET=<mongodb_connection_string>
+AWS_ACCESS_KEY=<aws_access_key_id>
+AWS_SECRET_KEY=<aws_secret_access_key>
 ```
 
-**Note**: The `.env` file is properly configured in `.gitignore` to prevent credential exposure.
+**Note**: 
+- The `.env` file is properly configured in `.gitignore` to prevent credential exposure
+- Actual credentials are provided separately and configured in the backend `.env` file
+- Never commit the `.env` file or expose credentials in documentation or code
 
 ## API Endpoints Status
 
