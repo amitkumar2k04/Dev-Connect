@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { BASE_URL } from "./constaints";
+import { BASE_URL } from "./constants";
 
 
 
