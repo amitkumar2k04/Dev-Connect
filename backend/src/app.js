@@ -11,18 +11,15 @@ const paymentRouter = require("./routes/payment");
 const http = require ("http");
 const initializeSocket = require ("./utils/socket");
 const chatRouter = require("./routes/chat");
+const { getCorsOptions } = require("./config/cors");
+const errorHandler = require("./middleware/errorHandler");
 require('dotenv').config()
 
 require("./utils/cronjobs");
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-    cors({
-        origin: "http://localhost:5173",   // Your frontend URL
-        credentials : true,                 // Allow cookies if needed
-    })
-);
+app.use(cors(getCorsOptions()));
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
@@ -31,6 +28,8 @@ app.use("/", userRouter);
 app.use("/", paymentRouter);
 app.use("/", chatRouter);
 
+// Error handling middleware should be last
+app.use(errorHandler);
 
 const server = http.createServer(app);
 initializeSocket(server);

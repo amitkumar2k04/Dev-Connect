@@ -122,15 +122,28 @@ userRouter.get("/feed", userAuth, async (req, res) => {
 userRouter.get("/user/info/:userId", userAuth, async (req, res) => {
   try {
     const { userId } = req.params;
-    const user = await User.findById(userId).select(USER_SAFE_DATA);
+    const user = await User.findById(userId)
+      .select(USER_SAFE_DATA)
+      .lean();
     
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({
+        status: 'error',
+        message: 'User not found'
+      });
     }
     
-    res.json(user);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.json({
+      status: 'success',
+      data: user,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: 'Failed to fetch user information',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 });
 
