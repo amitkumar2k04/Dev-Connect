@@ -2,6 +2,7 @@ const socket = require("socket.io");
 const crypto = require("crypto");
 const { Chat } = require("../models/chat");
 const connectionRequestModel = require("../models/connectionRequest");
+const corsOptions = require("../config/cors");
 
 const getSecretRoomId = (userId, targetUserId) => {
   return crypto
@@ -12,9 +13,7 @@ const getSecretRoomId = (userId, targetUserId) => {
 
 const initializeSocket = (server) => {
   const io = socket(server, {
-    cors: {
-      origin: "http://localhost:5173",
-    },
+    cors: corsOptions,
   });
 
   io.on("connection", (socket) => {

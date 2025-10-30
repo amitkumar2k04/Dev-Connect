@@ -7,22 +7,19 @@ const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
 const cors = require("cors");
+const corsOptions = require("./config/cors");
 const paymentRouter = require("./routes/payment");
 const http = require ("http");
 const initializeSocket = require ("./utils/socket");
 const chatRouter = require("./routes/chat");
+const errorHandler = require("./middleware/errorHandler");
 require('dotenv').config()
 
 require("./utils/cronjobs");
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-    cors({
-        origin: "http://localhost:5173",   // Your frontend URL
-        credentials : true,                 // Allow cookies if needed
-    })
-);
+app.use(cors(corsOptions));
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
@@ -31,6 +28,8 @@ app.use("/", userRouter);
 app.use("/", paymentRouter);
 app.use("/", chatRouter);
 
+// Error handler middleware - must be last
+app.use(errorHandler);
 
 const server = http.createServer(app);
 initializeSocket(server);
