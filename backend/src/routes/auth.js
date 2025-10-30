@@ -36,7 +36,7 @@ authRouter.post("/signup", async(req, res) => {
         
         res.json({message : "User added successfully!", data : savedUser});
     } catch(err){
-        res.status(400).send("Error : " + err.message);
+        res.status(400).json({ message: "Error", error: err.message });
     }
 });
 
@@ -69,7 +69,7 @@ authRouter.post("/login", async (req, res) => {
         }
 
     } catch(err){
-        res.status(400).send("Error:" + err.message);
+        res.status(400).json({ message: "Error", error: err.message });
     }
 });
 

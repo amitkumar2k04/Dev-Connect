@@ -15,6 +15,14 @@ require('dotenv').config()
 
 require("./utils/cronjobs");
 
+// Validate required environment variables
+const requiredEnvVars = ['JWT_SECRET', 'DB_CONNECTION_SECRET', 'PORT'];
+const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+if (missingEnvVars.length > 0) {
+    console.error(`Missing required environment variables: ${missingEnvVars.join(', ')}`);
+    process.exit(1);
+}
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(

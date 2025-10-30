@@ -30,7 +30,7 @@ userRouter.get("/user/requests/received", userAuth, async (req, res) => {
       data: connectionRequest,
     });
   } catch (err) {
-    res.status(400).send("ERROR: " + err.message);
+    res.status(400).json({ message: "ERROR", error: err.message });
   }
 });
 
@@ -59,7 +59,7 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
 
     res.json({ data });
   } catch (err) {
-    res.status(400).send("ERROR: " + err.message);
+    res.status(400).json({ message: "ERROR", error: err.message });
   }
 });
 

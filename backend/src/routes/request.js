@@ -65,7 +65,7 @@ requestRouter.post(
         data,
       });
     } catch (err) {
-      res.status(400).send("ERROR :" + err.message);
+      res.status(400).json({ message: "ERROR", error: err.message });
     }
   }
 );
@@ -110,7 +110,7 @@ requestId should be valid
 
 
     }catch(err){
-        res.status(400).send("ERROR" + err.message);
+        res.status(400).json({ message: "ERROR", error: err.message });
     }
   }
 );
