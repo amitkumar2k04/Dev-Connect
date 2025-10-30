@@ -23,7 +23,7 @@ paymentRouter.post("/payment/create", userAuth, async(req, res) => {
               firstName,
               lastName,
               emailId,
-              "membershipType " : memberShipType,
+              "membershipType" : memberShipType,
             },
           });
 
