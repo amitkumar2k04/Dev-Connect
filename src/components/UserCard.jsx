@@ -1,55 +1,62 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/constaints";
+import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
+import Button from "./Button";
 
-const UserCard = (props) => {
+const UserCard = ({ user, hideActions = false }) => {
+  const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
   const dispatch = useDispatch();
 
-  const { user, showButtons } = props;
-
-  const reviewProfile = async (status, _id) => {
+  const handleSendRequest = async (status, userId) => {
+    // Optimistically remove the user from UI
+    dispatch(removeUserFromFeed(userId));
     try {
-      const res = await axios.post(
-        BASE_URL + "/request/send/" + status + "/" + _id,
+      await axios.post(
+        `${BASE_URL}/request/send/${status}/${userId}`,
         {},
         { withCredentials: true }
       );
-      dispatch(removeUserFromFeed(_id));
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.error("Failed to send request:", err?.response?.data?.message || err.message);
     }
   };
 
-  const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
-  //   console.log(user);
   return (
-    <div>
-      <div className="card bg-base-300 w-96 shadow-xl">
-        <figure>
-          <img className="w-full h-60 object-cover rounded-xl border border-gray-700" src={photoUrl} alt="photo" />
-        </figure>
-        <div className="card-body">
-          <h2 className="text-xl text-center font-semibold text-white mt-4">{firstName + " " + lastName}</h2>
-          {age && gender && <p className="text-center text-xl text-white mt-4">{age + ", " + gender}</p>}
-          <p className="text-gray-400 text-sm mt-1 text-center px-4">{about}</p>
-          {showButtons && (
-            <div className="card-actions justify-center my-4">
-              <button
-                className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-all duration-300"
-                onClick={() => reviewProfile("ignored", _id)}
-              >
-                Reject
-              </button>
-              <button
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition-all duration-300"
-                onClick={() => reviewProfile("interested", _id)}
-              >
-                Interested
-              </button>
-            </div>
-          )}
-        </div>
+    <div className="w-90 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 shadow-xl p-4 text-white transition-transform hover:scale-[1.01] duration-300">
+      <div className="flex flex-col items-center text-center">
+        <img
+          src={photoUrl}
+          alt="User"
+          className="w-32 h-32 object-cover rounded-full border-4 border-white/20 shadow-md mb-4"
+        />
+        <h2 className="text-2xl font-semibold">{firstName + " " + lastName}</h2>
+        {age && gender && (
+          <p className="text-sm text-gray-300">{`${age}, ${gender}`}</p>
+        )}
+        <p className="mt-2 text-sm text-gray-200">{about}</p>
+
+        {!hideActions && (
+          <div className="flex gap-4 mt-6">
+            <Button
+              variant="primary"
+              size="sm"
+              className="w-full bg-gradient-to-r from-gray-500 to-red-700 hover:from-gray-600 hover:to-red-900 text-white font-medium shadow-lg transition duration-300"
+              onClick={() => handleSendRequest("ignored", _id)}
+            >
+              Ignore
+            </Button>
+
+            <Button
+              variant="primary"
+              size="sm"
+              className="w-full"
+              onClick={() => handleSendRequest("interested", _id)}
+            >
+              Interested
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

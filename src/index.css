@@ -1,2 +1,107 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* ✅ Prevent horizontal scroll */
+}
+
+body {
+  background-color: #030712; /* Tailwind bg-gray-950 */
+  color: #e5e7eb;            /* Tailwind text-gray-200 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Tailwind font-sans */
+  overflow-x: hidden; /* ✅ Prevent horizontal scroll */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #111827; /* Tailwind bg-gray-900 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ec4899, #22d3ee); /* pink-500 to cyan-400 */
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #db2777, #06b6d4); /* pink-600 to cyan-500 */
+}
+
+/* Animation classes */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.5); /* pink-500 with 50% opacity */
+}
+
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Text gradient animation */
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Perspective for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Custom animations */
+@keyframes shine {
+  from {
+    mask-position: 150%;
+  }
+  to {
+    mask-position: -50%;
+  }
+}
+
+.animate-shine {
+  mask-image: linear-gradient(
+    -75deg,
+    rgba(0,0,0,.6) 30%,
+    #000 50%,
+    rgba(0,0,0,.6) 70%
+  );
+  mask-size: 200%;
+  animation: shine 2s linear infinite;
+}
