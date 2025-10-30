@@ -17,14 +17,14 @@ This guide provides comprehensive instructions for testing the DevConnect applic
 Create a `.env` file in the `backend` directory with the following configuration:
 
 ```env
-RAZORPAY_KEY_ID=rzp_test_z75IromJe5IngZ
-RAZORPAY_KEY_SECRET=Tgv8nP7P9Rqg6zMxw3VJmnuf
-RAZORPAY_WEBHOOK_SECRET=Djx4uce9q3@8507
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
 PORT=5000
-JWT_SECRET=DEV@Tinder$790
-DB_CONNECTION_SECRET=mongodb+srv://amitkumar2k00:2e7x0yr7bW3AEeaH@namestenode.cello.mongodb.net/DevTinder
-AWS_ACCESS_KEY=AKIA2FXADPYYH3AVGOP5
-AWS_SECRET_KEY=7/CHS4U7dFPnjD9dvfIkYMjfbRzdVhsJ2GtDqolQ
+JWT_SECRET=your_jwt_secret_key
+DB_CONNECTION_SECRET=mongodb+srv://username:password@cluster.mongodb.net/database_name
+AWS_ACCESS_KEY=your_aws_access_key
+AWS_SECRET_KEY=your_aws_secret_key
 ```
 
 ⚠️ **Important:** The `.env` file is in `.gitignore` and should never be committed to version control.

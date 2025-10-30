@@ -1026,19 +1026,19 @@ try {
 PORT=5000
 
 # Database
-DB_CONNECTION_SECRET=mongodb+srv://...
+DB_CONNECTION_SECRET=mongodb+srv://username:password@cluster.mongodb.net/database_name
 
 # Authentication
-JWT_SECRET=your-secret-key
+JWT_SECRET=your_jwt_secret_key
 
 # Payment
-RAZORPAY_KEY_ID=rzp_test_...
-RAZORPAY_KEY_SECRET=...
-RAZORPAY_WEBHOOK_SECRET=...
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+RAZORPAY_WEBHOOK_SECRET=your_razorpay_webhook_secret
 
 # AWS
-AWS_ACCESS_KEY=AKIA...
-AWS_SECRET_KEY=...
+AWS_ACCESS_KEY=your_aws_access_key
+AWS_SECRET_KEY=your_aws_secret_key
 ```
 
 ### Frontend
