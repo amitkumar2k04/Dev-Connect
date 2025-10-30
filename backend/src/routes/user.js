@@ -105,7 +105,7 @@ userRouter.get("/feed", userAuth, async (req, res) => {
       // And we also don't want to visible my profile on feed - so bcz of that we write OR query - We write here whose ids is not equal to loggedIn UserId - i.e. </ $ne : loggedInUser._id />
     }).select(USER_SAFE_DATA).skip(skip).limit(limit);
 
-    res.send(users);
+    res.json({ data: users });
 
     // User should see all the users card from DB but User can avoid certain cards
     // User should see all the users cards excepts :-
@@ -113,6 +113,22 @@ userRouter.get("/feed", userAuth, async (req, res) => {
     //    2.  his connection (already friend of someones)
     //    3.  ignored people
     //    4.  already send the connection request
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// Get user info by userId
+userRouter.get("/user/info/:userId", userAuth, async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId).select(USER_SAFE_DATA);
+    
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    
+    res.json(user);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

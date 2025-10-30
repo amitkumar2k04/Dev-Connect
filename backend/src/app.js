@@ -43,5 +43,5 @@ connectDB().then(() => {
         console.log("server is sucessfully listning on port 5000 .. ");
     });
 }).catch(err => {
-    console.log("Database cannot be connection ...")
+    console.log("Database cannot be connection ...", err.message)
 })
